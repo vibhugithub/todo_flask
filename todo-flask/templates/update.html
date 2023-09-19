@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Todo</title>
+    <style>
+        body {
+            font-family: "Times New Roman", serif;
+            margin: 25px;
+            background-color: #9595FF;
+            color: #4132a2;
+        }
+
+        h1 {
+            color: #f8f4f4 ;
+            text-align: center;
+        }
+
+        .update-todo-form {
+            margin-top: 25px;
+        }
+
+        .update-todo-form input[type="text"] {
+            padding: 5px;
+            width: 250px;
+            height: 18px;
+            font-size: 14px;
+        }
+
+        .update-todo-form input[type="submit"] {
+            padding: 5px 10px;
+            background-color: #6565eb ;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            height: 32px;
+        }
+
+        .update-todo-form input[type="submit"]:hover {
+            background-color: #4132a2;
+        }
+      
+        .task-box {
+            margin-left: auto;
+            margin-right: auto;
+            border: 1px solid #ccc;
+            padding: 30px;
+            border-radius: 5px;
+            max-width: 600px;
+            background-color: #f9f9f9;
+            margin-bottom: 20px;
+          }
+          
+          h4 {
+            margin:0;
+            font-size: 30px; 
+            font-weight: bold;
+          }
+          
+          .description-box {
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+          }
+          
+          .status-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+          }
+          
+          button[type="submit"] {
+            padding: 10px 20px;
+            background-color: #6565eb;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 15px;
+          }
+          
+          button[type="submit"]:hover {
+            background-color: #4132a2;
+          }
+          
+
+    </style>
+</head>
+<body>
+    <h1>Update Todo</h1>
+    <form id="updateForm" action="/update/{{ todo['_id'] }}" method="POST">
+        <div class="task-box">
+          <h4>{{ todo['title'] }}</h4>
+          <div class="description-box">
+            <p>{{ todo['description'] }}</p>
+          </div>
+          <div class="status-buttons">
+            <label>
+              <input type="radio" name="status" value="completed" {% if todo['status'] == 'completed' %}checked{% endif %}>
+              Completed
+            </label>
+            <label>
+              <input type="radio" name="status" value="in progress" {% if todo['status'] == 'in progress' %}checked{% endif %}>
+              In Progress
+            </label>
+            <label>
+              <input type="radio" name="status" value="pending" {% if todo['status'] == 'pending' %}checked{% endif %}>
+              Pending
+            </label>
+          </div>
+          <button type="submit">Save Changes</button>
+        </div>
+      </form>
+      
+      
+</body>
+</html>
